@@ -7,7 +7,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 # Ваши данные (замените на реальные)
-TELEGRAM_BOT_TOKEN = "8282469899:AAGcXaY1c3Bn2KrgOUujW5Qr07gE6on7EmA"
+TELEGRAM_BOT_TOKEN = "8282469899:AAH2Rm80lvV7u5vgGufH4fmpV5Qq_OjoYGI"
 RESTAURANT_NAME = "Ресторан"
 GAS_URL = "https://script.google.com/macros/s/AKfycbxQ4p4mTJDiQAjYqR1t8xYTO1FoUwnb9JJW5U7qPKko3iA6CzUwy4bLcV9w-uxB6zK-wA/exec"
 
