@@ -8,8 +8,8 @@ app = Flask(__name__)
 
 # Ваши данные (замените на реальные)
 TELEGRAM_BOT_TOKEN = "8282469899:AAH2Rm80lvV7u5vgGufH4fmpV5Qq_OjoYGI"
-RESTAURANT_NAME = "Ресторан"
-GAS_URL = "https://script.google.com/macros/s/AKfycbxQ4p4mTJDiQAjYqR1t8xYTO1FoUwnb9JJW5U7qPKko3iA6CzUwy4bLcV9w-uxB6zK-wA/exec"
+RESTAURANT_NAME = "Delicatesy"
+GAS_URL = "https://script.google.com/macros/s/AKfycbz9v4zGTtFhOsGYM31_WA3x-42_08Uxpdo66N53ntCnAqMv-nZh8gYXANtOHQx7Zc6BRw/exec"
 
 # Файл для хранения состояния диалогов
 STATE_FILE = "conversation_states.json"
@@ -213,7 +213,7 @@ def handle_conversation(chat_id, text, state):
             
             # Сохранить в Google Sheets
             save_to_sheets(chat_id, state)
-            
+        
             # Завершить опрос (step 11 = завершено)
             state['step'] = 11
             
@@ -272,12 +272,12 @@ def save_to_sheets(chat_id, state):
         }
         
         print(f"Saving to sheets: {state['client_name']}")
-        # TODO: Добавить интеграцию с Google Sheets если нужна
+        response = requests.post(GAS_URL, json=payload, timeout=10)
+        print(f"Sheets response: {response.status_code} - {response.text}")
         
     except Exception as e:
         print(f"Save error: {str(e)}")
 
-@app.route('/reset', methods=['POST', 'GET'])
 def reset_states():
     """Очистить все состояния диалогов"""
     try:
