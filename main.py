@@ -277,6 +277,18 @@ def save_to_sheets(chat_id, state):
     except Exception as e:
         print(f"Save error: {str(e)}")
 
+@app.route('/reset', methods=['POST', 'GET'])
+def reset_states():
+    """Очистить все состояния диалогов"""
+    try:
+        if os.path.exists(STATE_FILE):
+            os.remove(STATE_FILE)
+            print("States file deleted successfully")
+        return {'ok': True, 'message': 'All conversation states reset'}, 200
+    except Exception as e:
+        return {'ok': False, 'error': str(e)}, 500
+
+
 
 @app.route('/health', methods=['GET'])
 def health():
